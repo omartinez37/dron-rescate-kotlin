@@ -144,9 +144,3 @@ fun evaluarRiesgo(
 
 ---
 
-## 🔀 Flujo de trabajo (Git)
-
-1. Este archivo se agrega en la rama `seguridad-mision`.
-2. Va en un **commit propio**, separado del código.
-3. Este commit debe aparecer **antes** que cualquier commit con la implementación en Kotlin de estas funciones.
-4. Tras este commit, se implementan las funciones respetando exactamente las firmas y reglas aquí documentadas.
