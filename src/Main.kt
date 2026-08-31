@@ -28,18 +28,44 @@ fun calcularTiempoFinal(
 }
 
 fun main() {
-   println("SIMULADOR DE MISIÓN DE RESCATE")
+   println("=== SIMULADOR DE MISIÓN DE RESCATE ===\n")
 
-   println("Introdusca la distancia del recorrido de ida:")
+   // 1. CAPTURA DE DATOS
+   print("Introduzca la distancia del recorrido de ida (km): ")
+   val distanciaIda = readlnOrNull()?.toDoubleOrNull() ?: 0.0
 
-   println("Introdusca Peso de la carga:")
+   print("Introduzca el peso de la carga (kg): ")
+   val pesoCarga = readlnOrNull()?.toDoubleOrNull() ?: 0.0
 
-   println("Introdusca la Batería disponible:")
+   print("Introduzca la batería disponible (%): ")
+   val bateriaActual = readlnOrNull()?.toDoubleOrNull() ?: 0.0
 
-   println("Introdusca la Velocidad del viento:")
+   print("Introduzca la velocidad del viento (km/h): ")
+   val velocidadViento = readlnOrNull()?.toDoubleOrNull() ?: 0.0
 
-   println("Introdusca Tipo de carga:")
+   print("Introduzca el tipo de carga (medicina, alimento, equipo): ")
+   val tipoCarga = readlnOrNull()?.trim() ?: "medicina"
 
-   println("Introdusca la condición del vuelo:")
+   print("Introduzca la condición del vuelo (normal, lluvia, emergencia): ")
+   val condicionVuelo = readlnOrNull()?.trim() ?: "normal"
+
+   // 2. CÁLCULOS (Módulo Estudiante A)
+   val distanciaTotal = calcularDistanciaTotal(distanciaIda)
+   val tiempoBase = calcularTiempoBase(distanciaTotal)
+
+   // Pasamos las lambdas a la función de orden superior
+   val tiempoFinal = calcularTiempoFinal(
+      tiempoBase = tiempoBase,
+      condicion = condicionVuelo,
+      ajusteLluvia = aumentarVeintePorciento,
+      ajusteEmergencia = disminuirDiezPorciento
+   )
+
+   // 3. MOSTRAR RESULTADOS
+   println("\n--- RESULTADO DE LA EVALUACIÓN ---")
+   println("Distancia total: $distanciaTotal km")
+   println("Tiempo estimado: $tiempoFinal minutos")
+
+   // (Los cálculos de batería y riesgo los integrará mi compañero)
 }
 
